@@ -4,8 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/funcionarios', function () {
+    return view('funcionarios');
+})->middleware(['auth', 'verified'])->name('funcionarios');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');

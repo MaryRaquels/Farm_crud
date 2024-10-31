@@ -1,1 +1,1 @@
-<img src="/img/logo-certa.png" width="200" height="100">
+<img src="/img/logo-certa.png" width="50" height="50">
