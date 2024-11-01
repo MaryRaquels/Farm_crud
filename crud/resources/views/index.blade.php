@@ -8,12 +8,12 @@
 </head>
 <body>
     @if (Route::has('login'))
-        <div class="container-fluid bg-dark vh-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
-            <div class="card bg-light shadow-lg" style="width: 18rem; height: 18rem">
+        <div class="container-fluid bg-info vh-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
+            <div class="card bg-light shadow-lg" style="width: 18rem; height: 16rem">
             <img src="{{ asset('img/logo-certa.png') }}" class="card-img-top mx-auto" style="height: 4rem; width: 4rem;">
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">Farm+</h5>
-                    <p class="card-subtitle text-muted mb-5">Eficiência e organização para transformar sua farmácia!</p>
+                    <p class="card-subtitle text-muted mb-4">Eficiência e organização para transformar sua farmácia!</p>
                     <h6 class="card-subtitle mb-2 text-center ">Bem vindo! No que posso ajudar?</h6>
                     <div class="mb-2">
                         <nav class="d-flex justify-content-center">
