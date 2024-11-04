@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -16,21 +17,21 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        $produto = $this->produto->all();
+        $produtos = $this->produto->all();
         return view('produtos', ['produtos' => $produtos]);   
     }
 
     public function create()
     {
-        return view('livro_create');    
+        return view('produtos_create');    
     }
 
     public function store(StoreUpdateRequest $request)
     {
-        $created = $this->livro->create([
-            'titulo' => $request->input('titulo'),
-            'autor' => $request->input('autor'),
-            'paginas' => $request->input('paginas'),
+        $created = $this->produto->create([
+            'nome' => $request->input('nome'),
+            'quantidade' => $request->input('quantidade'),
+            'valor' => $request->input('valor'),
         ]);
         if($created){
             return redirect()->back()->with('message', 'Adicionado com sucesso!');
@@ -41,17 +42,17 @@ class ProdutoController extends Controller
 
     public function show(string $id)
     {
-        //return view('livros', ['livro' => $livro]);
+        //return view('produtos', ['produto' => $produto]);
     }
 
-    public function edit(Livro $livro)
+    public function edit(Produto $produtos)
     {
-        return view('livro_edit', ['livro' => $livro]);
+        return view('produto_edit', ['produto' => $produtos]);
     }
 
-    public function update(StoreUpdateRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        $updated = $this->livro->where('id', $id)->update($request->except(['_token', '_method']));
+        $updated = $this->produto->where('id', $id)->update($request->except(['_token', '_method']));
         if($updated){
             return redirect()->back()->with('message', 'Atualizado com sucesso!');
         }
@@ -62,8 +63,8 @@ class ProdutoController extends Controller
 
     public function destroy(string $id)
     {
-        $this->livro->where('id', $id)->delete();
+        $this->produto->where('id', $id)->delete();
 
-        return redirect()->route('livros.index');
+        return redirect()->route('produtos.index');
     }
 }
