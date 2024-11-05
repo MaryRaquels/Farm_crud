@@ -26,7 +26,7 @@ class ProdutoController extends Controller
 
     public function create()
     {
-        return view('produtos_create');    
+        return view('produto_create');    
     }
 
     public function store(StoreUpdateRequest $request)
@@ -69,6 +69,6 @@ class ProdutoController extends Controller
     {
         $this->produto->where('id', $id)->delete();
 
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos');
     }
 }
