@@ -16,9 +16,9 @@ Route::delete('/produtos/{produto}', [ProdutoController::class, 'destroy'])->nam
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/funcionarios', function () {
-    return view('funcionarios');
-})->middleware(['auth', 'verified'])->name('funcionarios');
+Route::get('/remedios', function () {
+    return view('remedios');
+})->middleware(['auth', 'verified'])->name('remedios');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

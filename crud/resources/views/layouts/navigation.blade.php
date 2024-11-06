@@ -11,19 +11,19 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Início') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
                     <x-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')">
                         {{ __('Produtos') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('funcionarios')" :active="request()->routeIs('funcionarios')">
-                        {{ __('Funcionários') }}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
+                    <x-nav-link :href="route('remedios')" :active="request()->routeIs('funcionarios')">
+                        {{ __('Remédios Controlados') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -49,8 +49,8 @@
                         </x-dropdown-link>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('funcionarios')">
-                            {{ __('Funcionários') }}
+                        <x-dropdown-link :href="route('remedios')">
+                            {{ __('Remédios Controlados') }}
                         </x-dropdown-link>
 
                     <x-slot name="content">
@@ -105,8 +105,8 @@
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
-                <x-nav-link :href="route('funcionarios')" class="text-decoration-none">
-                    {{ __('Funcionários') }}
+                <x-nav-link :href="route('remedios')" class="text-decoration-none">
+                    {{ __('Remédios Controlados') }}
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
