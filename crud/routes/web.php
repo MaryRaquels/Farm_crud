@@ -19,7 +19,7 @@ Route::get('/remedios/create', [RemedioController::class, 'create'])->name('reme
 Route::post('/remedios', [RemedioController::class, 'store'])->name('remedios.store');
 Route::get('/remedios/{remedio}', [RemedioController::class, 'show'])->name('remedios.show');
 Route::get('/remedios/{remedio}/edit', [RemedioController::class, 'edit'])->name('remedios.edit');
-Route::put('/remedios/{remedio}', [RemedioController::class, 'update'])->name('remediosupdate');
+Route::put('/remedios/{remedio}', [RemedioController::class, 'update'])->name('remedios.update');
 Route::delete('/remedios/{remedio}', [RemedioController::class, 'destroy'])->name('remedios.destroy');
 
 

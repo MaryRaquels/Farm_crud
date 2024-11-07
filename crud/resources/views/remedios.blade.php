@@ -2,7 +2,7 @@
 <!--Table-->
 <div class="container mx-auto mt-3">
 <td class="flex justify-center mb-4">
-    <form method="GET" action="{{ route('remedio.create') }}">
+    <form method="GET" action="{{ route('remedios.create') }}">
         <x-primary-button type="submit" class="">
             Adicione aqui!
         </x-primary-button-button>
