@@ -23,6 +23,25 @@
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                 </div>
+                <!-- Categoria Remédio-->
+                <div class="mb-3">
+                    <select name="categoria_especial" 
+                    class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('categoria_especial') border-red-500 @enderror" 
+                    value="{{ old('categoria_especial', $remedio->categoria_especial) }}">
+                        <option value="" disabled selected>{{ old('categoria_especial', $remedio->categoria_especial) }}</option>
+                        <option value="A1">Entorpecentes (A1 e A2)
+                        </option>
+                        <option value="A3">Psicotrópicos (A3, B1 e B2)
+                        </option>
+                        <option value="C1">Sujeitos a controle especial (C1)</option>
+                        <option value="C2">Retinóicos (C2)</option>
+                        <option value="C3">Imunossupressores (C3)</option>
+                        <option value="C5">Anabolizantes de uso controlado (C5)</option>
+                    </select>
+                    @error('quantidade')
+                        <p class="text-red-500 text-sm">{{ $message }}</p>
+                    @enderror
+                </div>
                 <!--Quantidade Produto-->
                 <div class="mb-3">
                     <input type="text" name="quantidade" 

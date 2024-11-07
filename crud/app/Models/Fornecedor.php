@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fornecedores extends Model
+class Fornecedor extends Model
 {
     //
 }

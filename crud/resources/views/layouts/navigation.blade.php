@@ -12,18 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="border-0 text-decoration-none">
                         {{ __('Início') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
-                    <x-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')">
+                    <x-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')" class="border-0 text-decoration-none">
                         {{ __('Produtos') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
-                    <x-nav-link :href="route('remedios')" :active="request()->routeIs('funcionarios')">
+                    <x-nav-link :href="route('remedios')" :active="request()->routeIs('remedios')" class="border-0 text-decoration-none">
                         {{ __('Remédios Controlados') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
+                    <x-nav-link :href="route('fornecedores')" :active="request()->routeIs('fornecedores')" class="border-0 text-decoration-none">
+                        {{ __('Fornecedores') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -44,18 +49,23 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" class="border-0 text-decoration-none">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
+                    
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('remedios')">
+                        <x-dropdown-link :href="route('produtos')" class="border-0 text-decoration-none">
+                            {{ __('Produtos') }}
+                        </x-dropdown-link>
+                   
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route('remedios')" class="border-0 text-decoration-none">
                             {{ __('Remédios Controlados') }}
                         </x-dropdown-link>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('produtos')">
-                            {{ __('Produtos') }}
+                        <x-dropdown-link :href="route('fornecedores')" class="border-0 text-decoration-none">
+                            {{ __('Fornecedores') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -64,7 +74,8 @@
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();"
+                                    class="border-0 text-decoration-none">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -105,13 +116,18 @@
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
+                <x-nav-link :href="route('produtos')" class="text-decoration-none">
+                    {{ __('Produtos') }}
+                </x-nav-link>
+            </div>
+            <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
                 <x-nav-link :href="route('remedios')" class="text-decoration-none">
                     {{ __('Remédios Controlados') }}
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
-                <x-nav-link :href="route('produtos')" class="text-decoration-none">
-                    {{ __('Produtos') }}
+                <x-nav-link :href="route('fornecedores')" class="text-decoration-none">
+                    {{ __('Fornecedores') }}
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white pb-1">
