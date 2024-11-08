@@ -53,20 +53,6 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
                     
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('produtos')" class="border-0 text-decoration-none">
-                            {{ __('Produtos') }}
-                        </x-dropdown-link>
-                   
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('remedios')" class="border-0 text-decoration-none">
-                            {{ __('Remédios Controlados') }}
-                        </x-dropdown-link>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('fornecedores')" class="border-0 text-decoration-none">
-                            {{ __('Fornecedores') }}
-                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\RemedioController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\ControlePController;
 use Illuminate\Support\Facades\Route;
 
 /* Produtos */
@@ -33,7 +34,7 @@ Route::get('/fornecedores/{fornecedor}/edit', [FornecedorController::class, 'edi
 Route::put('/fornecedores/{fornecedor}', [FornecedorController::class, 'update'])->name('fornecedores.update');
 Route::delete('/fornecedores/{fornecedor}', [FornecedorController::class, 'destroy'])->name('fornecedores.destroy');
 
-
+/* Controle Preços */
 
 Route::get('/', function () {
     return view('index');
