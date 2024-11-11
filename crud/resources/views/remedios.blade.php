@@ -1,6 +1,13 @@
 <x-app-layout>
 <!--Table-->
 <div class="container mx-auto mt-3">
+@if(session()->has('message'))
+    <div class="alert alert-danger my-3 mx-4 d-flex justify-content-center align-items-center">
+        <ul class="mb-0 ">
+            {{ session()->get('message')}}
+        </ul>
+    </div>
+@endif
 <td class="flex justify-center mb-4">
     <form method="GET" action="{{ route('remedios.create') }}">
         <x-primary-button type="submit" class="">
@@ -41,8 +48,7 @@
                     <form action="{{ route('remedios.destroy', $remedio->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este produto?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:underline">Excluir
-                        </button>
+                        <button type="submit" class="text-red-600 hover:underline">Excluir</button>
                     </form>
                 </td>
             </tr>

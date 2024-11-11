@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Http\Requests\StoreUpdateRequest;
+use App\Http\Requests\FornecedorRequest;
 
 
 class FornecedorController extends Controller
@@ -29,18 +29,14 @@ class FornecedorController extends Controller
         return view('fornecedor_create');    
     }
 
-    public function store(StoreUpdateRequest $request)
+    public function store(FornecedorRequest $request)
     {
-        $validatedData = $request->validate([
-            'cnpj' => 'required|formato_cnpj|unique:fornecedors,cnpj',
-        ]);
-        $cnpj = preg_replace('/\D/', '', $request->cnpj);
+        
     
         $created = $this->fornecedor->create([
-            'nome' => $request->input('nome'),
-            'quantidade' => $request->input('quantidade'),
-            'valor' => $request->input('valor'),
-            'validade' => $request->input('validade'),
+            'nome_fantasia' => $request->input('nome_fantasia'),
+            'email' => $request->input('email'),
+            'cnpj' => $request->input('cnpj'),
         ]);
         if($created){
             return redirect()->back()->with('message', 'Adicionado com sucesso!');
@@ -59,7 +55,7 @@ class FornecedorController extends Controller
         return view('fornecedor_edit', ['fornecedor' => $fornecedor]);
     }
 
-    public function update(StoreUpdateRequest $request, string $id)
+    public function update(FornecedorRequest $request, string $id)
     {
         $updated = $this->fornecedor->where('id', $id)->update($request->except(['_token', '_method']));
         if($updated){
@@ -74,7 +70,7 @@ class FornecedorController extends Controller
     {
         $this->fornecedor->where('id', $id)->delete();
 
-        return redirect()->route('fornecedors');
+        return redirect()->route('fornecedors')->with('message', 'Excluído com sucesso!');
     }
 }
 

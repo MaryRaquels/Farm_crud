@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateRequest extends FormRequest
+class RemedioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,24 +27,13 @@ class StoreUpdateRequest extends FormRequest
                 'min:3',
                 'max:45',
             ],
-            'nome_fantasia' => [
-                'required',
-                'min:3',
-                'max:45',
-            ],
-            'cnpj' => [
-                'required', 
-                'string', 
-                'min:18'
-            ],
-            'categoria_especial' => [
-                'required', 
-                'string', 
-            ],
             'quantidade' => [
                 'required',
                 'min:1',
                 'max:5',
+            ],
+            'categoria_especial' => [
+                'required',
             ],
             'valor' => [
                 'required',
@@ -53,7 +42,7 @@ class StoreUpdateRequest extends FormRequest
             ],
             'validade' => [
                 'required',
-                'min:2',
+                'min:10',
                 'max:10',
             ],
         ];

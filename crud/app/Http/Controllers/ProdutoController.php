@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Http\Requests\StoreUpdateRequest;
+use App\Http\Requests\ProdutoRequest;
 
 
 class ProdutoController extends Controller
@@ -29,7 +29,7 @@ class ProdutoController extends Controller
         return view('produto_create');    
     }
 
-    public function store(StoreUpdateRequest $request)
+    public function store(ProdutoRequest $request)
     {
         $created = $this->produto->create([
             'nome' => $request->input('nome'),
@@ -54,7 +54,7 @@ class ProdutoController extends Controller
         return view('produto_edit', ['produto' => $produto]);
     }
 
-    public function update(StoreUpdateRequest $request, string $id)
+    public function update(ProdutoRequest $request, string $id)
     {
         $updated = $this->produto->where('id', $id)->update($request->except(['_token', '_method']));
         if($updated){
@@ -69,6 +69,6 @@ class ProdutoController extends Controller
     {
         $this->produto->where('id', $id)->delete();
 
-        return redirect()->route('produtos');
+        return redirect()->route('produtos')->with('message', 'Excluído com sucesso!');
     }
 }

@@ -14,43 +14,43 @@
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <!--Nome Produto-->
-                <div class="mb-3">
+                <div class="mb-4 relative">
                     <input type="text" name="nome" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('nome') border-red-500 @enderror" 
                         value="{{ old('nome', $produto->nome) }}" 
                         placeholder="Nome">
                         @error('nome')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                 </div>
                 <!--Quantidade Produto-->
-                <div class="mb-3">
+                <div class="mb-4 relative">
                     <input type="number" name="quantidade" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('quantidade') border-red-500 @enderror" 
                         value="{{ old('quantidade', $produto->quantidade) }}" 
                         placeholder="Quantidade">
                         @error('quantidade')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                 </div>
                 <!--Valor Produto-->
-                <div class="mb-3">
+                <div class="mb-4 relative">
                     <input type="number" name="valor" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('valor') border-red-500 @enderror" 
                         value="{{ old('valor', $produto->valor) }}" 
                         placeholder="Preço">
                         @error('valor')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                 </div>
                 <!--Validade Produto-->
-                <div class="mb-3">
+                <div class="mb-4">
                     <input type="text" name="validade" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
                         value="{{ old('validade', $produto->validade) }}" 
                         placeholder="validade">
                         @error('validade')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                 </div>
                 <!--Botões-->

@@ -8,23 +8,23 @@
     </div>
 @endif
 <div class="container-fluid  vh-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
-    <div class="card bg-light shadow-lg" style="width: 28rem; height: 28rem">
+    <div class="card bg-light shadow-lg" style="width: 28rem; height: 33rem">
         <div class="card-body text-center">
             <form action="{{ route('remedios.update', ['remedio' => $remedio->id]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
-                <!--Nome Produto-->
-                <div class="mb-3">
+                <!--Nome Remédios Controlados-->
+                <div class="mb-4 relative">
                     <input type="text" name="nome" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('nome') border-red-500 @enderror" 
                         value="{{ old('nome', $remedio->nome) }}" 
                         placeholder="Nome">
                         @error('nome')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
                 </div>
-                <!-- Categoria Remédio-->
-                <div class="mb-3">
+                <!-- Categoria Remédios Controlados-->
+                <div class="mb-4 relative">
                     <select name="categoria_especial" 
                     class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('categoria_especial') border-red-500 @enderror" 
                     value="{{ old('categoria_especial', $remedio->categoria_especial) }}">
@@ -38,38 +38,38 @@
                         <option value="C3">Imunossupressores (C3)</option>
                         <option value="C5">Anabolizantes de uso controlado (C5)</option>
                     </select>
-                    @error('quantidade')
-                        <p class="text-red-500 text-sm">{{ $message }}</p>
+                    @error('categoria')
+                        <p class="text-red-500 text-sm  absolute mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                <!--Quantidade Produto-->
-                <div class="mb-3">
+                <!--Quantidade Remédios Controlados-->
+                <div class="mb-4 relative">
                     <input type="text" name="quantidade" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('quantidade') border-red-500 @enderror" 
                         value="{{ old('quantidade', $remedio->quantidade) }}" 
                         placeholder="Quantidade">
                         @error('quantidade')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
                 </div>
-                <!--Valor Produto-->
-                <div class="mb-3">
+                <!--Valor Remédios Controlados-->
+                <div class="mb-4 relative">
                     <input type="number" name="valor" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('valor') border-red-500 @enderror" 
                         value="{{ old('valor', $remedio->valor) }}" 
                         placeholder="Preço">
                         @error('valor')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
                 </div>
-                <!--Validade Produto-->
-                <div class="mb-3">
+                <!--Validade Remédios Controlados-->
+                <div class="mb-4 relative">
                     <input type="text" name="validade" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
                         value="{{ old('validade', $remedio->validade) }}" 
                         placeholder="validade">
                         @error('validade')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
                 </div>
                 <!--Botões-->

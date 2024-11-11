@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Remedio;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Http\Requests\StoreUpdateRequest;
+use App\Http\Requests\RemedioRequest;
 
 
 class RemedioController extends Controller
@@ -29,7 +29,7 @@ class RemedioController extends Controller
         return view('remedio_create');    
     }
 
-    public function store(StoreUpdateRequest $request)
+    public function store(RemedioRequest $request)
     {
         $created = $this->remedio->create([
             'nome' => $request->input('nome'),
@@ -54,7 +54,7 @@ class RemedioController extends Controller
         return view('remedio_edit', ['remedio' => $remedio]);
     }
 
-    public function update(StoreUpdateRequest $request, string $id)
+    public function update(RemedioRequest $request, string $id)
     {
         $updated = $this->remedio->where('id', $id)->update($request->except(['_token', '_method']));
         if($updated){
@@ -69,6 +69,6 @@ class RemedioController extends Controller
     {
         $this->remedio->where('id', $id)->delete();
 
-        return redirect()->route('remedios');
+        return redirect()->route('remedios')->with('message', 'Excluído com sucesso!');
     }
 }

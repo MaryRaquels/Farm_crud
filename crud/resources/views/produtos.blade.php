@@ -1,6 +1,13 @@
 <x-app-layout>
 <!--Table-->
 <div class="container mx-auto mt-3">
+@if(session()->has('message'))
+    <div class="alert alert-danger my-3 mx-4 d-flex justify-content-center align-items-center">
+        <ul class="mb-0 ">
+            {{ session()->get('message')}}
+        </ul>
+    </div>
+@endif
 <td class="flex justify-center mb-4">
     <form method="GET" action="{{ route('produtos.create') }}">
         <x-primary-button type="submit" class="">
