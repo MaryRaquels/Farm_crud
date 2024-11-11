@@ -20,8 +20,8 @@ class FornecedorController extends Controller
 
     public function index()
     {
-        $fornecedores = $this->fornecedor->all();
-        return view('fornecedores', ['fornecedores' => $fornecedores]);   
+        $fornecedors = $this->fornecedor->all();
+        return view('fornecedors', ['fornecedors' => $fornecedors]);   
     }
 
     public function create()
@@ -31,6 +31,11 @@ class FornecedorController extends Controller
 
     public function store(StoreUpdateRequest $request)
     {
+        $validatedData = $request->validate([
+            'cnpj' => 'required|formato_cnpj|unique:fornecedors,cnpj',
+        ]);
+        $cnpj = preg_replace('/\D/', '', $request->cnpj);
+    
         $created = $this->fornecedor->create([
             'nome' => $request->input('nome'),
             'quantidade' => $request->input('quantidade'),
@@ -46,7 +51,7 @@ class FornecedorController extends Controller
 
     public function show(string $id)
     {
-        return view('fornecedores', ['fornecedor' => $fornecedor]);
+        //return view('fornecedors', ['fornecedor' => $fornecedor]);
     }
 
     public function edit(Fornecedor $fornecedor)
@@ -69,6 +74,7 @@ class FornecedorController extends Controller
     {
         $this->fornecedor->where('id', $id)->delete();
 
-        return redirect()->route('fornecedores');
+        return redirect()->route('fornecedors');
     }
 }
+

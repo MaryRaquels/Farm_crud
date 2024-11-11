@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\RemedioController;
 use App\Http\Controllers\FornecedorController;
-use App\Http\Controllers\ControlePController;
 use Illuminate\Support\Facades\Route;
 
 /* Produtos */
@@ -26,13 +25,13 @@ Route::put('/remedios/{remedio}', [RemedioController::class, 'update'])->name('r
 Route::delete('/remedios/{remedio}', [RemedioController::class, 'destroy'])->name('remedios.destroy');
 
 /* Fornecedores*/
-Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
-Route::get('/fornecedores/create', [FornecedorController::class, 'create'])->name('fornecedores.create');
-Route::post('/fornecedores', [FornecedorController::class, 'store'])->name('fornecedores.store');
-Route::get('/fornecedores/{fornecedor}', [FornecedorController::class, 'show'])->name('fornecedores.show');
-Route::get('/fornecedores/{fornecedor}/edit', [FornecedorController::class, 'edit'])->name('fornecedores.edit');
-Route::put('/fornecedores/{fornecedor}', [FornecedorController::class, 'update'])->name('fornecedores.update');
-Route::delete('/fornecedores/{fornecedor}', [FornecedorController::class, 'destroy'])->name('fornecedores.destroy');
+Route::get('/fornecedors', [FornecedorController::class, 'index'])->name('fornecedors');
+Route::get('/fornecedors/create', [FornecedorController::class, 'create'])->name('fornecedors.create');
+Route::post('/fornecedors', [FornecedorController::class, 'store'])->name('fornecedors.store');
+Route::get('/fornecedors/{fornecedor}', [FornecedorController::class, 'show'])->name('fornecedors.show');
+Route::get('/fornecedors/{fornecedor}/edit', [FornecedorController::class, 'edit'])->name('fornecedors.edit');
+Route::put('/fornecedors/{fornecedor}', [FornecedorController::class, 'update'])->name('fornecedors.update');
+Route::delete('/fornecedors/{fornecedor}', [FornecedorController::class, 'destroy'])->name('fornecedors.destroy');
 
 /* Controle Preços */
 

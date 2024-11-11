@@ -24,7 +24,7 @@
                 </div>
                 <!--Quantidade Produto-->
                 <div class="mb-3">
-                    <input type="text" name="quantidade" 
+                    <input type="number" name="quantidade" 
                         class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('quantidade') border-red-500 @enderror" 
                         value="{{ old('quantidade') }}" 
                         placeholder="Quantidade">

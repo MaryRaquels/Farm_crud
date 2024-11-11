@@ -27,7 +27,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-8 sm:flex">
-                    <x-nav-link :href="route('fornecedores')" :active="request()->routeIs('fornecedores')" class="border-0 text-decoration-none">
+                    <x-nav-link :href="route('fornecedors')" :active="request()->routeIs('fornecedors')" class="border-0 text-decoration-none">
                         {{ __('Fornecedores') }}
                     </x-nav-link>
                 </div>
@@ -112,7 +112,7 @@
                 </x-nav-link>
             </div>
             <div class="mt-3 space-y-1 px-4 font-medium text-base text-white">
-                <x-nav-link :href="route('fornecedores')" class="text-decoration-none">
+                <x-nav-link :href="route('fornecedors')" class="text-decoration-none">
                     {{ __('Fornecedores') }}
                 </x-nav-link>
             </div>

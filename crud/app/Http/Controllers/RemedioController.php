@@ -46,7 +46,7 @@ class RemedioController extends Controller
 
     public function show(string $id)
     {
-        return view('remedios', ['remedio' => $remedio]);
+        //return view('remedios', ['remedio' => $remedio]);
     }
 
     public function edit(Remedio $remedio)

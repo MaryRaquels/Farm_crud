@@ -27,6 +27,20 @@ class StoreUpdateRequest extends FormRequest
                 'min:3',
                 'max:45',
             ],
+            'nome_fantasia' => [
+                'required',
+                'min:3',
+                'max:45',
+            ],
+            'cnpj' => [
+                'required', 
+                'string', 
+                'min:18'
+            ],
+            'categoria_especial' => [
+                'required', 
+                'string', 
+            ],
             'quantidade' => [
                 'required',
                 'min:1',
