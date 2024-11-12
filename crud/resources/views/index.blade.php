@@ -20,7 +20,7 @@
                         <nav class="d-flex justify-content-center">
 
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="btn btn-outline-dark me-2">Dashboard</a>
+                                <a href="{{ url('/dashboard') }}" class="btn btn-outline-info me-2">Painel Inicial</a>
 
                                 @else
                                     <a href="{{ route('login') }}" class="btn btn-outline-info me-2">Entrar</a>

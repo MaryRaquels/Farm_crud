@@ -30,7 +30,7 @@
                         <option value="" disabled selected>Categoria</option>
                         <option value="A1">Entorpecentes (A1 e A2)
                         </option>
-                        <option value="A3'">Psicotrópicos (A3, B1 e B2)
+                        <option value="A3">Psicotrópicos (A3, B1 e B2)
                         </option>
                         <option value="C1">Sujeitos a controle especial (C1)</option>
                         <option value="C2">Retinóicos (C2)</option>
