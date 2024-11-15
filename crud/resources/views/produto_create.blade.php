@@ -1,66 +1,87 @@
 <x-app-layout>
-<!--Confirmação-->
-@if(session()->has('message'))
-    <div class=" alert alert-success my-1 mx-4 d-flex justify-content-center align-items-center">
-        <ul class="mb-0 ">
-            {{ session()->get('message')}}
-        </ul>
-    </div>
-@endif
-<div class=" container-fluid  vh-100 d-flex justify-content-center align-items-center" style="min-height: 100vh">
-    <div class="card bg-light shadow-lg" style="width: 28rem; height: 28rem">
-        <div class="card-body text-center">
-            <form action="{{ route('produtos.store') }}" method="POST">
-                @csrf
-                <!--Nome Produto-->
-                <div class=" relative mb-4">
-                    <input type="text" name="nome" 
-                        class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('nome') border-red-500 @enderror" 
-                        value="{{ old('nome') }}" 
-                        placeholder="Nome">
+    <!-- Confirmação -->
+    @if(session()->has('message'))
+        <div class="alert alert-success my-1 mx-4 d-flex justify-content-center align-items-center">
+            <ul class="mb-0">
+                {{ session()->get('message') }}
+            </ul>
+        </div>
+    @endif
+
+    <!-- Container centralizado -->
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="card bg-white shadow-lg rounded-lg w-100 h-80">
+            <div class="card-body flex flex-col justify-between h-full">
+                <form action="{{ route('produtos.store') }}" method="POST" class="space-y-3">
+                    @csrf
+
+                    <!-- Nome do Produto -->
+                    <div class="relative mb-4">
+                        <input type="text" name="nome" 
+                            class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('nome') border-red-500 @enderror" 
+                            value="{{ old('nome') }}" 
+                            placeholder="Nome">
                         @error('nome')
-                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
-                </div>
-                <!--Quantidade Produto-->
-                <div class="relative mb-4">
-                    <input type="number" name="quantidade" 
-                        class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('quantidade') border-red-500 @enderror" 
-                        value="{{ old('quantidade') }}" 
-                        placeholder="Quantidade">
+                    </div>
+
+                    <!-- Categoria -->
+                    <div class="mb-4 relative">
+                        <select name="id_categoria" 
+                            class="w-full py-2 px-3 border text-gray-500 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('id_categoria') border-red-500 @enderror">
+                            <option value="" disabled selected>Categoria</option>
+                            <option value="1">Higiene Pessoal</option>
+                            <option value="2">Remédios</option>
+                            <option value="3">Suplementos Alimentares</option>
+                            <option value="4">Cosméticos</option>
+                            <option value="5">Equipamentos Médicos</option>
+                        </select>
+                        @error('id_categoria')
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Quantidade do Produto -->
+                    <div class="relative mb-4">
+                        <input type="number" name="quantidade" 
+                            class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('quantidade') border-red-500 @enderror" 
+                            value="{{ old('quantidade') }}" 
+                            placeholder="Quantidade">
                         @error('quantidade')
-                            <p class="absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
-                </div>
-                <!--Valor Produto-->
-                <div class="relative mb-4">
-                    <input type="number" name="valor" 
-                        class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('valor') border-red-500 @enderror" 
-                        value="{{ old('valor') }}" 
-                        placeholder="Preço">
+                    </div>
+
+                    <!-- Preço -->
+                    <div class="relative mb-4">
+                        <input type="number" name="valor" 
+                            class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('valor') border-red-500 @enderror" 
+                            value="{{ old('valor') }}" 
+                            placeholder="Preço">
                         @error('valor')
-                            <p class=" absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
-                </div>
-                <!--Validade Produto-->
-                <div class="relative mb-4">
-                    <input type="text" name="validade" 
-                        class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
-                        value="{{ old('validade') }}" 
-                        placeholder="validade">
+                    </div>
+
+                    <!-- Validade -->
+                    <div class="relative mb-4">
+                        <input type="text" name="validade" 
+                            class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
+                            value="{{ old('validade') }}" 
+                            placeholder="Validade">
                         @error('validade')
-                            <p class=" absolute mt-1 text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
-                </div>
-                <!--Botões-->
-                <div class="space-y-2">
-                    <button type="submit" class="w-full btn btn-info text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Adicionar</button>
-                    <button class="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-300">
-                        <a href="/produtos" class="text-decoration-none text-light">Voltar</a>
-                    </button>
-                </div>
-            </form>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="space-y-2">
+                        <button type="submit" class="w-full bg-info hover:bg-info text-white py-2 px-4 rounded-lg transition duration-300">Adicionar</button>
+                        <a href="/produtos" class="w-full block bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg text-center transition duration-300 text-decoration-none">Voltar</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </x-app-layout>

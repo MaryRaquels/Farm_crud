@@ -32,6 +32,9 @@ class ProdutoRequest extends FormRequest
                 'min:1',
                 'max:5',
             ],
+            'id_categoria' => [
+                'required',
+            ],
             'valor' => [
                 'required',
                 'min:1',

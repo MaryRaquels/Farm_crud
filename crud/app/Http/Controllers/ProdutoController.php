@@ -33,6 +33,7 @@ class ProdutoController extends Controller
     {
         $created = $this->produto->create([
             'nome' => $request->input('nome'),
+            'id_categoria' => $request->input('id_categoria'),
             'quantidade' => $request->input('quantidade'),
             'valor' => $request->input('valor'),
             'validade' => $request->input('validade'),
