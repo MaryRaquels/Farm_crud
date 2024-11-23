@@ -42,8 +42,7 @@ class RemedioRequest extends FormRequest
             ],
             'validade' => [
                 'required',
-                'min:10',
-                'max:10',
+                'date_format:d/m/Y',
             ],
         ];
     }

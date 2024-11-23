@@ -67,11 +67,11 @@
                     </div>
 
                     <!-- Validade do Remédio -->
-                    <div class="relative mb-4">
+                    <div class="relative mb-4" x-data>
                         <input type="text" name="validade" 
                             class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
-                            value="{{ old('validade') }}" 
-                            placeholder="Validade">
+                            value="{{ old('validade') }} "
+                            x-mask="99/99/9999" placeholder="Validade" >
                         @error('validade')
                             <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\ProdutoRequest;
 
 
@@ -31,12 +31,13 @@ class ProdutoController extends Controller
 
     public function store(ProdutoRequest $request)
     {
+        $dataFormatada = Carbon::createFromFormat('d/m/Y', $request->validade)->format('Y-m-d');
         $created = $this->produto->create([
             'nome' => $request->input('nome'),
             'id_categoria' => $request->input('id_categoria'),
             'quantidade' => $request->input('quantidade'),
             'valor' => $request->input('valor'),
-            'validade' => $request->input('validade'),
+            'validade' => $dataFormatada,
         ]);
         if($created){
             return redirect()->back()->with('message', 'Adicionado com sucesso!');
@@ -57,7 +58,12 @@ class ProdutoController extends Controller
 
     public function update(ProdutoRequest $request, string $id)
     {
-        $updated = $this->produto->where('id', $id)->update($request->except(['_token', '_method']));
+        $dataFormatada = Carbon::createFromFormat('d/m/Y', $request->validade)->format('Y-m-d');
+
+        $dados = $request->except(['_token', '_method']);
+        $dados['validade'] = $dataFormatada;
+
+        $updated = $this->produto->where('id', $id)->update($dados);
         if($updated){
             return redirect()->back()->with('message', 'Atualizado com sucesso!');
         }

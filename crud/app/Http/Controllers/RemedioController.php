@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Remedio;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\RemedioRequest;
 
 
@@ -31,11 +31,13 @@ class RemedioController extends Controller
 
     public function store(RemedioRequest $request)
     {
+        $dataFormatada = Carbon::createFromFormat('d/m/Y', $request->validade)->format('Y-m-d');
+
         $created = $this->remedio->create([
             'nome' => $request->input('nome'),
             'quantidade' => $request->input('quantidade'),
             'valor' => $request->input('valor'),
-            'validade' => $request->input('validade'),
+            'validade' => $dataFormatada,
         ]);
         if($created){
             return redirect()->back()->with('message', 'Adicionado com sucesso!');
@@ -56,7 +58,12 @@ class RemedioController extends Controller
 
     public function update(RemedioRequest $request, string $id)
     {
-        $updated = $this->remedio->where('id', $id)->update($request->except(['_token', '_method']));
+        $dataFormatada = Carbon::createFromFormat('d/m/Y', $request->validade)->format('Y-m-d');
+
+        $dados = $request->except(['_token', '_method']);
+        $dados['validade'] = $dataFormatada;
+
+        $updated = $this->remedio->where('id', $id)->update($dados);
         if($updated){
             return redirect()->back()->with('message', 'Atualizado com sucesso!');
         }

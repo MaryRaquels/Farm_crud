@@ -31,7 +31,7 @@
                     <div class="mb-4 relative">
                         <select name="id_categoria" 
                             class="w-full py-2 px-3 border text-gray-500 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('id_categoria') border-red-500 @enderror">
-                            <option value="" disabled selected>{{ old('nome', $produto->categoria->nome) }}</option>
+                            <option value="" disabled selected>{{ old('$produto->categoria->nome', $produto->categoria->nome) }}</option>
                             <option value="1">Higiene Pessoal</option>
                             <option value="2">Remédios</option>
                             <option value="3">Suplementos Alimentares</option>
@@ -66,11 +66,11 @@
                     </div>
 
                     <!-- Validade -->
-                    <div class="relative mb-4">
+                    <div class="relative mb-4" x-data>
                         <input type="text" name="validade" 
                             class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('validade') border-red-500 @enderror" 
-                            value="{{ old('validade', $produto->validade) }}" 
-                            placeholder="Validade">
+                            value="{{ old('validade', $produto->validade) }} "
+                            x-mask="99/99/9999" placeholder="Validade" >
                         @error('validade')
                             <p class="text-red-500 text-sm absolute mt-1">{{ $message }}</p>
                         @enderror
