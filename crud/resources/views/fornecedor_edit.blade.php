@@ -10,7 +10,7 @@
 
     <!-- Container centralizado -->
     <div class="flex items-center justify-center min-h-screen px-4">
-        <div class="card bg-white shadow-lg rounded-lg w-80 h-80 p-4">
+        <div class="card bg-white shadow-lg rounded-lg w-100 h-80 p-4">
             <div class="card-body flex flex-col justify-between h-full">
                 <form action="{{ route('fornecedors.update', ['fornecedor' => $fornecedor->id]) }}" method="POST" class="space-y-3">
                     @csrf
@@ -39,10 +39,11 @@
                     </div>
 
                     <!-- CNPJ -->
-                    <div class="relative mb-4">
+                    <div class="relative mb-4" x-data>
                         <input type="text" name="cnpj" 
                             class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 @error('cnpj') border-red-500 @enderror" 
                             value="{{ old('cnpj', $fornecedor->cnpj) }}" 
+                            x-mask="99.999.999/9999-99" 
                             placeholder="CNPJ" 
                             id="cnpj">
                         @error('cnpj')

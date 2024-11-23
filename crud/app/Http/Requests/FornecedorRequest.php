@@ -37,7 +37,7 @@ class FornecedorRequest extends FormRequest
             'cnpj' => [
                 'required',
                 'string',
-                'min:18',
+                'size:18',
             ],
         ];
     }

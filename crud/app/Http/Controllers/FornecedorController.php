@@ -7,6 +7,7 @@ use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Requests\FornecedorRequest;
+use App\Rules\Cnpj;
 
 
 class FornecedorController extends Controller
@@ -31,12 +32,12 @@ class FornecedorController extends Controller
 
     public function store(FornecedorRequest $request)
     {
-        
+        $cnpjSemFormatacao = preg_replace('/\D/', '', $request->cnpj);
     
         $created = $this->fornecedor->create([
             'nome_fantasia' => $request->input('nome_fantasia'),
             'email' => $request->input('email'),
-            'cnpj' => $request->input('cnpj'),
+            'cnpj' => $cnpjSemFormatacao,
         ]);
         if($created){
             return redirect()->back()->with('message', 'Adicionado com sucesso!');
@@ -57,7 +58,12 @@ class FornecedorController extends Controller
 
     public function update(FornecedorRequest $request, string $id)
     {
-        $updated = $this->fornecedor->where('id', $id)->update($request->except(['_token', '_method']));
+        $cnpjSemFormatacao = preg_replace('/\D/', '', $request->cnpj);
+
+        $dados = $request->except(['_token', '_method']);
+        $dados['cnpj'] = $cnpjSemFormatacao;
+
+        $updated = $this->fornecedor->where('id', $id)->update($dados);
         if($updated){
             return redirect()->back()->with('message', 'Atualizado com sucesso!');
         }
